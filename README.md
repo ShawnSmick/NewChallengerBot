@@ -28,6 +28,21 @@ Commands
 !about : Credits
 
 ```
+
+# SETUP
+
+Download the latest build here!
+
+Setup should be reasonably simple for create a PostgreSQL database with the name NewChallenger on the machine you are running this bot on, and run the included sql file located in the SQL folder.
+
+For Windows Run NewChallenger.bat
+
+For Linux Run NewChallenger.sh
+
+For Mac Run NewChallenger.command ... maybe I have no way to test this let me know if it works.
+
+The first time you start the program the bot should prompt you for the Discord Bot Token, plop that in there and you should be off to the races.
+
 # Future
 
 My intention for this to slowly add more features such as an Elo system of some type as well as a distinction between different games, and maybe some tools for randomly selecting maps.
