@@ -72,6 +72,33 @@ public class Match {
 		return "Match has already been recorded!";
 		
 	}
+	public String unmatch(String player) {
+		return unmatch(matchContainsName(player));
+	}
+	public String unmatch(Player player) {
+		return unmatch(matchContainsPlayer(player));
+	}
+	public String unmatch(int team) {
+		if(winner == -1) {
+			winner = team;
+			String match = "Match";
+			for(int i = 0; i < teams.size(); i++) {
+				for(Player player : teams.get(i).getPlayers()) {
+					if(player.getAlias()!=null) {
+						match += " "+ player.getAlias();
+					}else {
+						match += " "+ player.getName();
+					}
+				}
+				if(i!=teams.size()-1)
+					match += " vs";
+			}
+			match += " ended!";
+
+			return match;
+		}
+		return "Match has already been recorded!";
+	}
 	public int getTeamAmount() {
 		return teams.size();
 	}
@@ -99,5 +126,28 @@ public class Match {
 	public void setPairingImage(byte[] pairingImage) {
 		this.pairingImage = pairingImage;
 	}
-	
+	public boolean isOld(Timestamp old) {
+		if(timestamp.before(old)) {
+			return true;
+		}
+		return false;
+	}
+	public String toString() {
+		String match = "Match";
+		for(int i = 0; i<teams.size();i++) {
+			for(Player player : teams.get(i).getPlayers()) {
+				if(player.getAlias()!=null) {
+					match += " "+ player.getAlias();
+				}else {
+					match += " "+ player.getName();
+				}
+			}
+			if(i!=teams.size()-1)
+				match += " vs";
+		}
+		match += " " +timestamp.toString();
+		if(winner!=-1)
+			match+=" FINISHED";
+		return match;
+	}
 }

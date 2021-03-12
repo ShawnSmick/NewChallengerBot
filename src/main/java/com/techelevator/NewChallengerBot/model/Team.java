@@ -18,14 +18,14 @@ public class Team {
 	}
 	public boolean containsPlayer(String player) {
 		for(Player play : players) {
-			if(play.getAlias().equals(player)) {
+			if(play.getName().matches("(?i)"+player)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	public void addPlayer(Player player) throws DuplicatePlayerException{
-		if(player!=null&&!containsPlayer(player)) {
+		if((player!=null&&!containsPlayer(player))||player.getId()==-1) {
 			players.add(player);
 		}else {
 			throw new DuplicatePlayerException();
